@@ -11,3 +11,33 @@ body {
 .tab-content {
     padding: 20px;
 }
+
+.card {
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .card-header {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 10px 15px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-weight: bold;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-text {
+    margin-bottom: 10px;
+  }
+  
+  .card-img-bottom {
+    width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  

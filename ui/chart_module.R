@@ -1,12 +1,26 @@
 library(shiny)
 library(shinydashboard)
-library(jsonlite)
 
-# 从json文件中获取的图表信息，请确保文件路径正确
-chartInfo <- fromJSON("data/charts_info.json")
+# 假设 chartInfo 是一个列表，每个元素包含 tag 和 contents
+chartInfo <- list(
+  list(
+    tag = "柱状图",
+    contents = list(
+      list(title = "柱状图示例1", description = "这是柱状图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例2", description = "这是柱状图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg")
+    )
+  ),
+  list(
+    tag = "折线图",
+    contents = list(
+      list(title = "折线图示例1", description = "这是折线图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例2", description = "这是折线图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg")
+    )
+  )
+)
 
 # 自定义卡片函数
-customCard <- function(title = NULL, description = NULL, imageUrl = NULL, height = "200px") {
+chartCard <- function(title = NULL, description = NULL, imageUrl = NULL, height = "200px") {
   div(
     class = "card",
     div(class = "card-header", title),
@@ -21,19 +35,17 @@ customCard <- function(title = NULL, description = NULL, imageUrl = NULL, height
 # 图表作品模块的 UI
 chart_module_ui <- function(id) {
   ns <- NS(id)
-  lapply(seq_along(chartInfo$tag), function(index) {
-    tag <- chartInfo$tag[index]
-    contents <- chartInfo$contents[[index]]
-    content <- contents[index, ]
-    customCard(title = content$title, description = content$description, imageUrl = content$imageUrl)
-  })
-}
-
-
-
-# 图表作品模块的服务器逻辑
-chart_module_server <- function(id) {
-  moduleServer(id, function(input, output, session) {
-    # 这里不需要服务器逻辑，因为所有内容都是静态的
-  })
+  tabBox(
+    title = NULL,
+    id = ns("tabSet1"),
+    width = 8,
+    do.call(tabsetPanel, lapply(chartInfo, function(category) {
+      tabPanel(
+        title = category$tag,
+        do.call(tagList, lapply(category$contents, function(content) {
+          chartCard(title = content$title, description = content$description, imageUrl = content$imageUrl)
+        }))
+      )
+    }))
+  )
 }
