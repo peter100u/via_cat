@@ -7,12 +7,38 @@ chartInfo <- list(
     tag = "柱状图",
     contents = list(
       list(title = "柱状图示例1", description = "这是柱状图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例2", description = "这是柱状图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例1", description = "这是柱状图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例2", description = "这是柱状图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例1", description = "这是柱状图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例2", description = "这是柱状图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例1", description = "这是柱状图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例2", description = "这是柱状图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例1", description = "这是柱状图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例2", description = "这是柱状图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例1", description = "这是柱状图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例2", description = "这是柱状图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "柱状图示例1", description = "这是柱状图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
       list(title = "柱状图示例2", description = "这是柱状图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg")
     )
   ),
   list(
     tag = "折线图",
     contents = list(
+      list(title = "折线图示例1", description = "这是折线图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例2", description = "这是折线图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例1", description = "这是折线图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例2", description = "这是折线图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例1", description = "这是折线图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例2", description = "这是折线图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例1", description = "这是折线图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例2", description = "这是折线图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例1", description = "这是折线图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例2", description = "这是折线图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例1", description = "这是折线图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例2", description = "这是折线图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例1", description = "这是折线图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
+      list(title = "折线图示例2", description = "这是折线图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
       list(title = "折线图示例1", description = "这是折线图示例1的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg"),
       list(title = "折线图示例2", description = "这是折线图示例2的描述。", imageUrl = "https://www.chartjs.org/img/chartjs-logo.svg")
     )
@@ -38,13 +64,18 @@ chart_module_ui <- function(id) {
   tabBox(
     title = NULL,
     id = ns("tabSet1"),
-    width = 8,
+    width = 12,
     do.call(tabsetPanel, lapply(chartInfo, function(category) {
       tabPanel(
         title = category$tag,
-        do.call(tagList, lapply(category$contents, function(content) {
-          chartCard(title = content$title, description = content$description, imageUrl = content$imageUrl)
-        }))
+        fluidRow(
+          do.call(tagList, lapply(category$contents, function(content) {
+            column(
+              width = 3, # 根据网格系统选择列宽，这里我们使用三列布局
+              chartCard(title = content$title, description = content$description, imageUrl = content$imageUrl)
+            )
+          }))
+        )
       )
     }))
   )
