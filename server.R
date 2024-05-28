@@ -10,6 +10,9 @@
 
 library(shiny)
 
+source("ui/chart_module.R")
+
 # Define server logic required to draw a histogram
 function(input, output, session) {
+  chart_module_server("chart1")
 }

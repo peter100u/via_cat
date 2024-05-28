@@ -1,0 +1,32 @@
+[
+    {
+        "tag": "柱状图",
+        "contents": [
+            {
+                "title": "柱状图示例1",
+                "description": "这是柱状图示例1的描述。",
+                "imageUrl": "https://www.chartjs.org/img/chartjs-logo.svg"
+            },
+            {
+                "title": "柱状图示例2",
+                "description": "这是柱状图示例2的描述。",
+                "imageUrl": "https://www.chartjs.org/img/chartjs-logo.svg"
+            }
+        ]
+    },
+    {
+        "tag": "折线图",
+        "contents": [
+            {
+                "title": "折线图示例1",
+                "description": "这是折线图示例1的描述。",
+                "imageUrl": "https://www.chartjs.org/img/chartjs-logo.svg"
+            },
+            {
+                "title": "折线图示例2",
+                "description": "这是折线图示例2的描述。",
+                "imageUrl": "https://www.chartjs.org/img/chartjs-logo.svg"
+            }
+        ]
+    }
+]

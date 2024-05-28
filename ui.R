@@ -5,11 +5,10 @@ source("ui/chart_module.R")
 
 fluidPage(
   tags$head(
-    includeCSS("www/styles.css")
-  ),
-  tags$head(
+    includeCSS("www/styles.css"),
     includeScript("www/test.js")
   ),
+
   # 第一部分：标题和描述
   fluidRow(
     column(
@@ -37,6 +36,6 @@ fluidPage(
 
   # 第三部分：图表作品区域
   fluidRow(
-    column(width = 12, align = "center", chartModuleUI("chart1"))
+    column(width = 12, align = "center", chart_module_ui("chart1"))
   )
 )
