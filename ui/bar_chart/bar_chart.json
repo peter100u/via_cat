@@ -1,0 +1,25 @@
+{
+    "chartType": "bar",
+    "parameters": [
+      {
+        "name": "xvar",
+        "label": "X 变量",
+        "type": "select",
+        "options": [],
+        "default": ""
+      },
+      {
+        "name": "fill",
+        "label": "填充颜色",
+        "type": "color",
+        "default": "#2C3E50"
+      },
+      {
+        "name": "title",
+        "label": "图表标题",
+        "type": "text",
+        "default": "柱状图"
+      }
+    ]
+  }
+  

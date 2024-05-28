@@ -9,10 +9,13 @@
 
 
 library(shiny)
-
+library(shiny.router)
 source("ui/chart_module.R")
+source("ui/bar_chart/bar_chart.R")
 
 # Define server logic required to draw a histogram
 function(input, output, session) {
-  chart_module_server("chart1")
+  router_server()
+  # chart_module_server("chart1")
+  callModule(barChartServer, "barChartUI")
 }
