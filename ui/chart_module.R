@@ -1,5 +1,5 @@
 library(shiny)
-library(shinydashboard)
+library(bslib)
 
 # 假设 chartInfo 是一个列表，每个元素包含 tag 和 contents
 chartInfo <- list(
@@ -46,14 +46,22 @@ chartInfo <- list(
 )
 
 # 自定义卡片函数
-chartCard <- function(title = NULL, description = NULL, imageUrl = NULL, height = "200px") {
+chartCard <- function(
+    title = NULL,
+    description = NULL,
+    image_url = NULL,
+    height = "200px") {
   div(
     class = "card",
     div(class = "card-header", title),
     div(
       class = "card-body",
       p(description, class = "card-text"),
-      img(src = imageUrl, class = "card-img-bottom", style = paste0("height:", height))
+      img(
+        src = image_url,
+        class = "card-img-bottom",
+        style = paste0("height:", height)
+      )
     )
   )
 }
@@ -61,18 +69,20 @@ chartCard <- function(title = NULL, description = NULL, imageUrl = NULL, height 
 # 图表作品模块的 UI
 chart_module_ui <- function(id) {
   ns <- NS(id)
-  tabBox(
-    title = NULL,
+  navset_card_underline(
     id = ns("tabSet1"),
-    width = 12,
     do.call(tabsetPanel, lapply(chartInfo, function(category) {
-      tabPanel(
+      nav_panel(
         title = category$tag,
         fluidRow(
           do.call(tagList, lapply(category$contents, function(content) {
             column(
-              width = 3, # 根据网格系统选择列宽，这里我们使用三列布局
-              chartCard(title = content$title, description = content$description, imageUrl = content$imageUrl)
+              width = 3, # 根据网格系统选择列宽，这里我们使用12/3列布局
+              chartCard(
+                title = content$title,
+                description = content$description,
+                image_url = content$imageUrl
+              )
             )
           }))
         )

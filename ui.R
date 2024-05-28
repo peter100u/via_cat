@@ -1,6 +1,4 @@
 library(shiny)
-library(shinydashboard)
-
 source("ui/chart_module.R")
 
 fluidPage(
@@ -11,26 +9,19 @@ fluidPage(
 
   # 第一部分：标题和描述
   fluidRow(
-    column(
-      12,
+    div(
       align = "center",
-      box(
-        title = "数据可视化大全",
-        status = "primary",
-        solidHeader = TRUE,
-        width = 12,
-        p("无限精美的图表，满足你的一切视觉效果")
-      )
+      br(),
+      h2("数据可视化大全"),
+      p("无限精美的图表，满足你的一切视觉效果"),
+      br(),
     )
   ),
   # 第二部分：搜索框
   fluidRow(
-    column(12,
+    div(
       align = "center",
-      box(
-        textInput("search", label = NULL, placeholder = "开始您的搜索吧"),
-        width = 12
-      )
+      textInput("search", label = NULL, placeholder = "开始您的搜索吧")
     )
   ),
 
