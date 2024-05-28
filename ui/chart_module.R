@@ -69,10 +69,10 @@ chartCard <- function(
 # 图表作品模块的 UI
 chart_module_ui <- function(id) {
   ns <- NS(id)
-  navset_card_underline(
+  bslib::navset_card_underline(
     id = ns("tabSet1"),
     do.call(tabsetPanel, lapply(chartInfo, function(category) {
-      nav_panel(
+      bslib::nav_panel(
         title = category$tag,
         fluidRow(
           do.call(tagList, lapply(category$contents, function(content) {
@@ -89,4 +89,10 @@ chart_module_ui <- function(id) {
       )
     }))
   )
+}
+
+chart_module_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
+
+  })
 }
